@@ -6,6 +6,15 @@
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <IncludeSymbols>true</IncludeSymbols>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageTags>CefSharp Html Pdf</PackageTags>
+    <Authors>Kation</Authors>
+    <RepositoryUrl>https://github.com/Kation/CefSharp.HtmlToPdf</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <Description>CefSharp Html To Pdf Component.</Description>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='net6.0'">
