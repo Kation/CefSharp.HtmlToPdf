@@ -1,0 +1,9 @@
+﻿{
+  "platformOptions": {
+  },
+  "mstest": {
+    "execution": {
+      "disableAppDomain": true
+    }
+  }
+}
