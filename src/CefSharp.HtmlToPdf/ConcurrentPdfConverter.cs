@@ -136,7 +136,9 @@ namespace CefSharp.HtmlToPdf
         {
             if (!_disposed)
             {
-                _cts.Cancel();
+                //_cts maybe null if constructor throw exception
+                if (_cts != null)
+                    _cts.Cancel();
                 if (disposing)
                 {
                     while (true)
