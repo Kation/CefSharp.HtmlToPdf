@@ -21,7 +21,11 @@ namespace CefSharp.HtmlToPdf
         protected override IResourceRequestHandler? GetResourceRequestHandler(IWebBrowser chromiumWebBrowser, IBrowser browser, IFrame frame, IRequest request, bool isNavigation, bool isDownload, string requestInitiator, ref bool disableDefaultHandling)
         {
             if (request.Url == "local://html/")
-                return new ByteResourceRequestHandler(Html ?? Array.Empty<byte>());
+            {
+                if (Html == null || Html.Length == 0)
+                    return null;
+                return new ByteResourceRequestHandler(Html);
+            }
             try
             {
                 var uri = new Uri(request.Url);

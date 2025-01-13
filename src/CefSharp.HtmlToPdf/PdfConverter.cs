@@ -75,6 +75,8 @@ namespace CefSharp.HtmlToPdf
                 throw new ObjectDisposedException(nameof(PdfConverter));
             if (html == null)
                 throw new ArgumentNullException(nameof(html));
+            if (html.Length == 0)
+                throw new ArgumentException("Html content can't be null.", nameof(html));
             await _semaphore.WaitAsync(cancellationToken);
             try
             {

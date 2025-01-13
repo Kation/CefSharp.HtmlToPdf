@@ -60,19 +60,30 @@ namespace CefSharp.HtmlToPdf
             Task.Run(ReleaseLoop);
         }
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public string? RootDirectory { get; set; }
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public Task<byte[]> ConvertAsync(string html, PdfPrintSettings? printSettings = null, CancellationToken cancellationToken = default)
         {
             return ConvertAsync(Encoding.UTF8.GetBytes(html), printSettings, cancellationToken);
         }
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public async Task<byte[]> ConvertAsync(byte[] html, PdfPrintSettings? printSettings = null, CancellationToken cancellationToken = default)
         {
             if (_disposed)
                 throw new ObjectDisposedException(nameof(ConcurrentPdfConverter));
             if (html == null)
                 throw new ArgumentNullException(nameof(html));
+            if (html.Length == 0)
+                throw new ArgumentException("Html content can't be null.", nameof(html));
             await _semaphore.WaitAsync(cancellationToken);
             _converting++;
             _semaphore.Release();
