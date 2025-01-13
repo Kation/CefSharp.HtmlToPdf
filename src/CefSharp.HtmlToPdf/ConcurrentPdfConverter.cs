@@ -101,7 +101,7 @@ namespace CefSharp.HtmlToPdf
                 {
                     requestHandler.Html = html;
                     browser.Load("local://html/");
-                    await browser.WaitForInitialLoadAsync();
+                    await browser.WaitForRenderIdleAsync(cancellationToken: cancellationToken);
 
                     data = await PrintToPdfAsync(browser, printSettings, cancellationToken);
                 }

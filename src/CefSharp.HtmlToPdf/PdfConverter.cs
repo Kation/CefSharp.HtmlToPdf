@@ -83,7 +83,7 @@ namespace CefSharp.HtmlToPdf
                 PdfConverterRequestHandler requestHandler = (PdfConverterRequestHandler)_browser.RequestHandler;
                 requestHandler.Html = html;
                 _browser.Load("local://html/");
-                await _browser.WaitForInitialLoadAsync();
+                await _browser.WaitForRenderIdleAsync();
                 requestHandler.Html = null;
 
                 return await PrintToPdfAsync(printSettings, cancellationToken);
